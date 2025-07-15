@@ -10,3 +10,12 @@ export const getProduct = async (req, res) => {
     if (!p) return res.status(404).json({ error: 'Not found' });
     res.json(p);
 };
+
+export const createProduct = async (req, res) => {
+    const { productName, productPrice } = req.body
+    const newProduct = await Product.create({
+        name: productName,
+        price: productPrice
+    })
+    return res.json(newProduct)
+}

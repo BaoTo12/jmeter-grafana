@@ -4,6 +4,7 @@ import helmet from "helmet";          // default export works in ESM
 import compression from "compression";
 import rateLimit from "express-rate-limit";
 import routes from "./routes/index.js";
+import 'dotenv/config';
 
 const app = express();
 
