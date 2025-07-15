@@ -1,6 +1,6 @@
 import express from "express";
 import morgan from "morgan";
-import helmet from "helmet";          // default export works in ESM
+import helmet from "helmet";         
 import compression from "compression";
 import rateLimit from "express-rate-limit";
 import routes from "./routes/index.js";
