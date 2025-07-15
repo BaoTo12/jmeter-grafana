@@ -1,0 +1,1 @@
+FROM node:current-alpine3.22 AS base

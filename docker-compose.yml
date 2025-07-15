@@ -1,0 +1,57 @@
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - monitoring
+    depends_on:
+      - influxdb
+    ports:
+      - "3000:3000"
+  influxdb:
+    image: influxdb:2.7
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUX_INIT_MODE=setup
+      - DOCKER_INFLUX_INIT_USERNAME=admin
+      - DOCKER_INFLUX_INIT_PASSWORD=password123
+      - DOCKER_INFLUX_INIT_ORG=performance-testing
+      - DOCKER_INFLUX_INIT_BUCKET=jmeter-metrics
+    volumes:
+      - ./influxdb-data:/var/lib/influxdb2
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+    networks:
+      - monitoring
+    restart: unless-stopped
+    depends_on:
+      - influxdb
+  jmeter:
+    image: justb4/jmeter:5.6.2
+    networks:
+      - monitoring
+    volumes:
+      - ./load-tests:/tests
+    entrypoint: >
+      sh -c "jmeter -n
+              -t /tests/mytestplan.jmx
+              -l /tests/results.jtl
+              -j /tests/jmeter.log"
+    depends_on:
+      - influxdb
+    restart: "no"
+networks:
+  monitoring:
+    driver: bridge
