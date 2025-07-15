@@ -1,0 +1,12 @@
+import Product from '../models/product.model.js';
+
+export const listProducts = async (req, res) => {
+    const prods = await Product.find();
+    res.json(prods);
+};
+
+export const getProduct = async (req, res) => {
+    const p = await Product.findById(req.params.id);
+    if (!p) return res.status(404).json({ error: 'Not found' });
+    res.json(p);
+};
