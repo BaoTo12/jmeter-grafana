@@ -3,6 +3,7 @@ import morgan from "morgan";
 import helmet from "helmet";          // default export works in ESM
 import compression from "compression";
 import rateLimit from "express-rate-limit";
+import routes from "./routes/index.js";
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use(limiter);
 
 // —— Database & Routes ——
 import "./dbs/init.db.js";
-import routes from "./routes/index.js";
+
 app.use("/", routes);
 
 export default app;
