@@ -23,7 +23,12 @@ app.use(limiter);
 
 // —— Database & Routes ——
 import "./dbs/init.db.js";
+import { initializeUsers } from "./controllers/auth.controller.js";
 
 app.use("/", routes);
+
+
+// initialize data
+// initializeUsers(100)
 
 export default app;

@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
+import bcrypt from "bcrypt"
 
 const JWT_KEY = "17dc48baee7cc12688c1f4598f9ad95038e85498"
 
@@ -39,5 +40,26 @@ export const authenticate = async (req, res, next) => {
         next()
     } catch (error) {
         throw error
+    }
+}
+
+export const initializeUsers = async (count) => {
+    for (let i = 1; i <= count; i++) {
+        const username = `user${String(i).padStart(3, '0')}`; // e.g. user001, user002, …
+        let plainPassword;               // default password
+        if (i < 10 && i > 0) {
+            plainPassword = `pass00${i}`
+        } else if (i >= 10 && i < 100) {
+            plainPassword = `pass0${i}`
+        } else if (i >= 100) {
+            plainPassword = `pass${i}`
+        }
+        console.log(plainPassword);
+
+        const passwordHash = await bcrypt.hash(plainPassword, 10);
+        await User.create({
+            username,
+            password: passwordHash
+        })
     }
 }
