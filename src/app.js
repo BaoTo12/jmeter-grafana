@@ -29,7 +29,7 @@ app.use("/", routes);
 
 
 // initialize data
-// initializeUsers(100)
+initializeUsers(100)
 // initProducts(50)
 
 export default app;

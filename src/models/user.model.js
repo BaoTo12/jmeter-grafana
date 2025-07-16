@@ -4,6 +4,7 @@ const DOCUMENT_NAME = "User";
 const COLLECTION_NAME = "Users";
 
 const userSchema = new mongoose.Schema({
+    _id: { type: Number, required: true },
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true }
 }, {

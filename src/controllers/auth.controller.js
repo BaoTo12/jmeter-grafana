@@ -49,6 +49,7 @@ export const authenticate = async (req, res, next) => {
 
 export const initializeUsers = async (count) => {
     for (let i = 1; i <= count; i++) {
+        const _id = i;
         const username = `user${String(i).padStart(3, '0')}`; // e.g. user001, user002, …
         let password;               // default password
         if (i < 10 && i > 0) {
@@ -61,6 +62,7 @@ export const initializeUsers = async (count) => {
         console.log({ password, username });
 
         await User.create({
+            _id,
             username,
             password: password
         })
