@@ -51,6 +51,7 @@ services:
               -j /tests/jmeter.log"
     depends_on:
       - influxdb
+      - app
     restart: "no"
 networks:
   monitoring:
