@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
-import bcrypt from "bcrypt"
+import productModel from '../models/product.model.js';
 
 const JWT_KEY = "17dc48baee7cc12688c1f4598f9ad95038e85498"
 
@@ -21,8 +21,12 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { username, password } = req.body;
-        const user = await User.findOne({ username });
-        if (!user || !(await user.comparePassword(password)))
+        console.log({ username, password });
+
+        const user = await User.findOne({ username }).lean();
+        console.log({ user });
+
+        if (!user || !(user.password === password))
             return res.status(401).json({ error: 'Invalid credentials' });
 
         const token = jwt.sign({ sub: user._id }, process.env.JWT_SECRET || JWT_KEY, { expiresIn: '10h' });
@@ -46,20 +50,35 @@ export const authenticate = async (req, res, next) => {
 export const initializeUsers = async (count) => {
     for (let i = 1; i <= count; i++) {
         const username = `user${String(i).padStart(3, '0')}`; // e.g. user001, user002, …
-        let plainPassword;               // default password
+        let password;               // default password
         if (i < 10 && i > 0) {
-            plainPassword = `pass00${i}`
+            password = `pass00${i}`
         } else if (i >= 10 && i < 100) {
-            plainPassword = `pass0${i}`
+            password = `pass0${i}`
         } else if (i >= 100) {
-            plainPassword = `pass${i}`
+            password = `pass${i}`
         }
-        console.log(plainPassword);
+        console.log({ password, username });
 
-        const passwordHash = await bcrypt.hash(plainPassword, 10);
         await User.create({
             username,
-            password: passwordHash
+            password: password
+        })
+    }
+}
+
+export const initProducts = async (count) => {
+    for (let i = 1; i <= count; i++) {
+        const productId = i;
+        const productName = `Sneaker ${i}`
+        const productPrice = Math.floor(Math.random() * 100);
+        let password;               // default password
+        console.log({ password, username });
+
+        await productModel.create({
+            _id: productId,
+            name: productName,
+            price: productPrice
         })
     }
 }
