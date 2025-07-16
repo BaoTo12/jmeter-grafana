@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const DOCUMENT_NAME = "Order";
-const COLLECTION_NAME = "Orders";
+const COLLECTION_NAME = "Orders";   
 
 const orderItem = new mongoose.Schema({
     product: { type: Number, ref: 'Product', required: true },

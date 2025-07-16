@@ -8,7 +8,7 @@ services:
     depends_on:
       - influxdb
     ports:
-      - "3000:3000"
+      - "3001:3000"
   influxdb:
     image: influxdb:2.7
     ports:
@@ -28,7 +28,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     ports:
-      - "3001:3000"
+      - "3002:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin123
     volumes:
@@ -39,16 +39,13 @@ services:
     depends_on:
       - influxdb
   jmeter:
-    image: justb4/jmeter:5.6.2
+    image: alpine/jmeter:5
     networks:
       - monitoring
     volumes:
       - ./load-tests:/tests
     entrypoint: >
-      sh -c "jmeter -n
-              -t /tests/mytestplan.jmx
-              -l /tests/results.jtl
-              -j /tests/jmeter.log"
+      sh -c "jmeter -n -t /tests/ecommerce-demo-test-plan.jmx -l /tests/results.jtl -j /tests/jmeter.log"
     depends_on:
       - influxdb
       - app
