@@ -4,12 +4,12 @@ const DOCUMENT_NAME = "Order";
 const COLLECTION_NAME = "Orders";
 
 const orderItem = new mongoose.Schema({
-    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+    product: { type: Number, ref: 'Product', required: true },
     quantity: { type: Number, required: true }
 });
 
 const orderSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    user: { type: Number, ref: 'User' },
     items: [orderItem],
     total: { type: Number },
     date: { type: Date, default: Date.now }
