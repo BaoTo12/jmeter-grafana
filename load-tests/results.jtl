@@ -1,4 +1,5 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+<<<<<<< HEAD
 1752648688993,14,Auth - login,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused (Connection refused)",Smoke Test 1-1,text,false,"Test failed: code expected to equal /
 
 ****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
@@ -587,3 +588,5 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 ****** comparison: [[[200                                                                  ]]]
 
 /",2673,0,1,1,http://localhost:3052/v1/api//auth/login,0,0,1
+=======
+>>>>>>> 4d3753d1b6d0694bc78657590f8962474291b8ba

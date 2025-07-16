@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "autoEnabled": true,
+  "dependencies": {
+    "extensions": {
+      "exposedComponents": [
+        "grafana-asserts-app/entity-assertions-widget/v1"
+      ]
+    },
+    "grafanaDependency": "\u003e=11.5.0",
+    "plugins": []
+  },
+  "extensions": {
+    "addedComponents": [
+      {
+        "description": "A block with assertions for a given service",
+        "targets": [
+          "grafana-asserts-app/entity-assertions-widget/v1"
+        ],
+        "title": "Asserts widget"
+      }
+    ],
+    "addedLinks": [
+      {
+        "description": "Open current query in the Traces Drilldown app",
+        "targets": [
+          "grafana/dashboard/panel/menu"
+        ],
+        "title": "Open in Traces Drilldown"
+      },
+      {
+        "description": "Try our new queryless experience for traces",
+        "targets": [
+          "grafana/explore/toolbar/action"
+        ],
+        "title": "Open in Grafana Traces Drilldown"
+      }
+    ],
+    "exposedComponents": [
+      {
+        "description": "A button that opens a traces view in the Traces Drilldown app.",
+        "id": "grafana-exploretraces-app/open-in-explore-traces-button/v1",
+        "title": "Open in Traces Drilldown button"
+      },
+      {
+        "description": "A component that renders a trace exploration view that can be embedded in other parts of Grafana.",
+        "id": "grafana-exploretraces-app/embedded-trace-exploration/v1",
+        "title": "Embedded Trace Exploration"
+      }
+    ],
+    "extensionPoints": [
+      {
+        "id": "grafana-exploretraces-app/investigation/v1"
+      }
+    ]
+  },
+  "id": "grafana-exploretraces-app",
+  "includes": [
+    {
+      "action": "datasources:explore",
+      "addToNav": true,
+      "defaultNav": true,
+      "name": "Explore",
+      "path": "/a/grafana-exploretraces-app/",
+      "type": "page"
+    }
+  ],
+  "info": {
+    "author": {
+      "name": "Grafana"
+    },
+    "build": {
+      "time": 1751278282933,
+      "repo": "https://github.com/grafana/traces-drilldown",
+      "branch": "main",
+      "hash": "3196ac93d8e63dc1a2cc49525e484c1cde8b0215",
+      "build": 625
+    },
+    "description": "Use Rate, Errors, and Duration (RED) metrics derived from traces to investigate errors within complex distributed systems.",
+    "keywords": [
+      "app",
+      "tempo",
+      "traces",
+      "explore"
+    ],
+    "links": [
+      {
+        "name": "Github",
+        "url": "https://github.com/grafana/explore-traces"
+      },
+      {
+        "name": "Report bug",
+        "url": "https://github.com/grafana/explore-traces/issues/new"
+      }
+    ],
+    "logos": {
+      "large": "img/logo.svg",
+      "small": "img/logo.svg"
+    },
+    "screenshots": [
+      {
+        "name": "histogram-breakdown",
+        "path": "img/histogram-breakdown.png"
+      },
+      {
+        "name": "errors-metric-flow",
+        "path": "img/errors-metric-flow.png"
+      },
+      {
+        "name": "errors-root-cause",
+        "path": "img/errors-root-cause.png"
+      }
+    ],
+    "updated": "2025-06-30",
+    "version": "1.1.1"
+  },
+  "name": "Grafana Traces Drilldown",
+  "preload": true,
+  "type": "app"
+}

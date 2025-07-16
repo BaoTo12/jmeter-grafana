@@ -45,7 +45,11 @@ services:
     volumes:
       - ./load-tests:/tests
     entrypoint: >
+<<<<<<< HEAD
       sh -c "jmeter -n -t /tests/ecommerce-demo-test-plan.jmx -l /tests/results.jtl  -j /tests/jmeter.log"
+=======
+      sh -c "jmeter -n -t /tests/ecommerce-demo-test-plan.jmx -l /tests/results.jtl -j /tests/jmeter.log"
+>>>>>>> 4d3753d1b6d0694bc78657590f8962474291b8ba
     depends_on:
       - influxdb
       - app
