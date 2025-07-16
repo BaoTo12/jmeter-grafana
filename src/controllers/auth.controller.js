@@ -72,8 +72,6 @@ export const initProducts = async (count) => {
         const productId = i;
         const productName = `Sneaker ${i}`
         const productPrice = Math.floor(Math.random() * 100);
-        let password;               // default password
-        console.log({ password, username });
 
         await productModel.create({
             _id: productId,

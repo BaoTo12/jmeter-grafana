@@ -4,6 +4,7 @@ const DOCUMENT_NAME = "Product";
 const COLLECTION_NAME = "Products";
 
 const productSchema = new mongoose.Schema({
+    _id: { type: Number, required: true },
     name: { type: String, required: true },
     price: { type: Number, required: true }
 }, {

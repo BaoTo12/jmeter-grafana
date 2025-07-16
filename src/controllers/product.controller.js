@@ -6,7 +6,9 @@ export const listProducts = async (req, res) => {
 };
 
 export const getProduct = async (req, res) => {
-    const p = await Product.findById(req.params.id);
+    const p = await Product.findOne({
+        _id: req.params.productId
+    });
     if (!p) return res.status(404).json({ error: 'Not found' });
     res.json(p);
 };
