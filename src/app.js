@@ -15,15 +15,15 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(compression());
 
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100
-});
-app.use(limiter);
+// const limiter = rateLimit({
+//     windowMs: 15 * 60 * 1000,
+//     max: 100
+// });
+// app.use(limiter);
 
 // —— Database & Routes ——
 import "./dbs/init.db.js";
-import { initializeUsers, initProducts } from "./controllers/auth.controller.js";
+// import { initializeUsers, initProducts } from "./controllers/auth.controller.js";
 
 app.use("/", routes);
 

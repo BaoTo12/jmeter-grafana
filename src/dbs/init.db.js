@@ -1,13 +1,12 @@
 "use strict"
 
-// import config from "../configs/mongo.config.js"
+import config from "../configs/mongo.config.js"
 import mongoose from "mongoose";
 
-// const { db: { host, port, name } } = config
-const connectionString = process.env.MONGODB_URI
+const { db: { host, port, name } } = config
+const connectionString = `mongodb://${host}:${port}/${name}`
 
-console.log({ connectionString } );
-console.log( "bbbbbbbbbbbbbbbbbbbbbbbbbbb");
+console.log({ connectionString });
 
 
 class Database {
@@ -22,7 +21,7 @@ class Database {
         }
 
         mongoose.connect(connectionString, {
-            maxPoolSize: 100
+            maxPoolSize: 50
         })
             .then(_ => {
                 console.log("Connect MongoDB Successfully 🌟")
