@@ -1,12 +1,13 @@
 "use strict"
 
-import config from "../configs/mongo.config.js"
+// import config from "../configs/mongo.config.js"
 import mongoose from "mongoose";
 
-const { db: { host, port, name } } = config
-const connectionString = `mongodb://${host}:${port}/${name}`
+// const { db: { host, port, name } } = config
+const connectionString = process.env.MONGODB_URI
 
-console.log({ connectionString });
+console.log({ connectionString } );
+console.log( "bbbbbbbbbbbbbbbbbbbbbbbbbbb");
 
 
 class Database {

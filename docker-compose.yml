@@ -1,17 +1,8 @@
-version: '3.8'
+
 
 services:
-  app:
-    image: node:current-alpine3.22
-    networks:
-      - monitoring
-    ports:
-      - 3001:3000
-    depends_on:
-        - influxdb
-
   influxdb:
-    image: 2.7-alpine
+    image: influxdb:2.7-alpine
     ports:
       - 8086:8086
     networks:
@@ -19,30 +10,24 @@ services:
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=admin
-      - DOCKER_INFLUXDB_INIT_PASSWORD=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password123 
       - DOCKER_INFLUXDB_INIT_ORG=performance-testing
       - DOCKER_INFLUXDB_INIT_BUCKET=jmeter-metrics
     volumes:
-      - ./load-test:/var/lib/influxdb2
+      - ./influx-db:/var/lib/influxdb2
       - ./config:/etc/influxdb2
     restart: unless-stopped
 
-    grafana:
-      image: grafana/grafana:main-ubuntu
-      ports:
-        - 3005:3000
-      networks:
-        - monitoring
-      restart: unless-stopped
-      depends_on:
-        - influxdb
-
-    jmeter:
-      image: alpine/jmeter:5
-      networks:
-        - monitoring
+  grafana:
+    image: grafana/grafana:main-ubuntu
+    ports:
+      - 3005:3000
+    networks:
+      - monitoring
+    restart: unless-stopped
+    depends_on:
+      - influxdb
 
 networks:
-  network: 
-    name: monitoring
+  monitoring:
     driver: bridge
