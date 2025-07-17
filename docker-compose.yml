@@ -15,7 +15,6 @@ services:
       - DOCKER_INFLUXDB_INIT_BUCKET=jmeter-metrics
     volumes:
       - ./influx-db:/var/lib/influxdb2
-      - ./config:/etc/influxdb2
     restart: unless-stopped
 
   grafana:
