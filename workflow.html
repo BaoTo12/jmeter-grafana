@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMeter Performance Testing Flow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            color: #f0f8ff;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            color: #4fc3f7;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #bbdefb;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .overview {
+            background: rgba(30, 30, 60, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .overview h2 {
+            color: #81d4fa;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        .overview-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .overview-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .overview-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .tech-icon {
+            text-align: center;
+            background: rgba(50, 70, 100, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            width: 120px;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: translateY(-5px);
+            background: rgba(70, 100, 150, 0.8);
+        }
+
+        .tech-icon i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #4fc3f7;
+        }
+
+        .flow-diagram {
+            background: rgba(30, 30, 60, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .flow-diagram h2 {
+            color: #81d4fa;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            position: relative;
+        }
+
+        .component {
+            background: rgba(40, 50, 90, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .component:hover {
+            transform: scale(1.05);
+            background: rgba(60, 80, 140, 0.9);
+        }
+
+        .component i {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #4fc3f7;
+        }
+
+        .component h3 {
+            margin-bottom: 15px;
+            color: #bbdefb;
+        }
+
+        .component p {
+            font-size: 0.95rem;
+            color: #e3f2fd;
+        }
+
+        .arrow {
+            position: absolute;
+            color: #4fc3f7;
+            font-size: 2rem;
+            z-index: 1;
+        }
+
+        .arrow-text {
+            position: absolute;
+            background: rgba(30, 30, 60, 0.9);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #bbdefb;
+            z-index: 3;
+        }
+
+        .steps {
+            background: rgba(30, 30, 60, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .steps h2 {
+            color: #81d4fa;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 30px;
+            background: rgba(40, 50, 90, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+            background: rgba(60, 80, 140, 0.7);
+        }
+
+        .step-number {
+            background: #4fc3f7;
+            color: #1a237e;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: #bbdefb;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .step-content p {
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #bbdefb;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .diagram-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tachometer-alt"></i> JMeter Performance Testing Flow</h1>
+            <p class="subtitle">Visualizing the workflow of JMeter, Node.js, InfluxDB, and Grafana integration</p>
+        </header>
+
+        <section class="overview">
+            <h2>System Overview</h2>
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>This demonstration showcases a complete performance testing workflow using Apache JMeter to test
+                        a Node.js application, with metrics stored in InfluxDB and visualized in Grafana.</p>
+
+                    <p>The workflow consists of four main components:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 20px;">
+                        <li>JMeter - Load generation and test execution</li>
+                        <li>Node.js Application - The system under test</li>
+                        <li>InfluxDB - Time-series database for storing metrics</li>
+                        <li>Grafana - Visualization platform for performance dashboards</li>
+                    </ul>
+
+                    <p>This setup allows for comprehensive performance testing, metric collection, and real-time
+                        visualization of system behavior under load.</p>
+                </div>
+            </div>
+
+            <div class="tech-icons">
+                <div class="tech-icon">
+                    <i class="fab fa-jenkins"></i>
+                    <div>JMeter</div>
+                </div>
+                <div class="tech-icon">
+                    <i class="fab fa-node-js"></i>
+                    <div>Node.js</div>
+                </div>
+                <div class="tech-icon">
+                    <i class="fas fa-database"></i>
+                    <div>InfluxDB</div>
+                </div>
+                <div class="tech-icon">
+                    <i class="fas fa-chart-bar"></i>
+                    <div>Grafana</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="flow-diagram">
+            <h2>Workflow Diagram</h2>
+            <div class="diagram-container">
+                <div class="component">
+                    <i class="fab fa-jenkins"></i>
+                    <h3>JMeter</h3>
+                    <p>Load testing tool that sends requests to the application</p>
+                </div>
+
+                <div class="arrow" style="top: 35%; left: 25%;">➔</div>
+
+                <div class="component">
+                    <i class="fab fa-node-js"></i>
+                    <h3>Node.js App</h3>
+                    <p>Application under test that processes requests and sends responses</p>
+                </div>
+
+                <div class="arrow" style="top: 35%; left: 49%;">➔</div>
+
+                <div class="component">
+                    <i class="fab fa-jenkins"></i>
+                    <h3>JMeter</h3>
+                    <p>Collects performance metrics from test execution</p>
+                </div>
+                <div class="arrow" style="top: 35%; left: 72%;">➔</div>
+                <div class="arrow" style="top: 75%; left: 35%;">➔</div>
+
+                <div class="component">
+                    <i class="fas fa-database"></i>
+                    <h3>InfluxDB</h3>
+                    <p>Time-series database that stores performance metrics</p>
+                </div>
+
+
+                <div class="component">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Grafana</h3>
+                    <p>Visualization tool that creates dashboards from metrics data</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps">
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Load Generation</h3>
+                    <p>JMeter sends simulated HTTP requests to the Node.js application based on the configured test
+                        plan. This simulates multiple users accessing the application simultaneously.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Application Processing</h3>
+                    <p>The Node.js application receives requests, processes them according to its business logic, and
+                        sends appropriate responses back to JMeter.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Metrics Collection</h3>
+                    <p>JMeter collects performance metrics including response times, throughput, error rates, and system
+                        resource utilization during the test execution.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Metrics Storage</h3>
+                    <p>JMeter sends the collected metrics to InfluxDB using a backend listener. InfluxDB stores this
+                        time-series data efficiently for later retrieval and analysis.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Data Visualization</h3>
+                    <p>Grafana connects to InfluxDB as a data source and queries the stored metrics. It then visualizes
+                        this data through customizable dashboards with graphs, gauges, and tables.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h3>Performance Analysis</h3>
+                    <p>Testers and developers analyze the Grafana dashboards to identify performance bottlenecks,
+                        monitor system behavior under load, and validate application performance against requirements.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>JMeter Performance Testing Flow Visualization | Created for JMeter Tool Demonstration</p>
+            <p>Node.js | JMeter | InfluxDB | Grafana Integration</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add animations to components on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const components = document.querySelectorAll('.component, .step');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            components.forEach(component => {
+                component.style.opacity = '0';
+                component.style.transform = 'translateY(30px)';
+                component.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(component);
+            });
+        });
+    </script>
+</body>
+
+</html>
