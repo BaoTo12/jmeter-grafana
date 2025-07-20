@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfluxDB & Grafana Introduction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            color: #f0f8ff;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(20, 25, 45, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(30, 35, 60, 0.9);
+            border-bottom: 1px solid rgba(100, 150, 255, 0.3);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 20px 0;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #bbdefb;
+        }
+
+        .tab:hover {
+            background: rgba(50, 80, 150, 0.5);
+        }
+
+        .tab.active {
+            background: rgba(30, 70, 150, 0.7);
+            color: #4fc3f7;
+            border-bottom: 3px solid #4fc3f7;
+        }
+
+        .content {
+            padding: 40px;
+            min-height: 80vh;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #4fc3f7;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #bbdefb;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tech-icon {
+            font-size: 5rem;
+            margin: 20px 0;
+            color: #4fc3f7;
+        }
+
+        .concepts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .concept-card {
+            background: rgba(40, 50, 90, 0.7);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 150, 255, 0.2);
+        }
+
+        .concept-card:hover {
+            transform: translateY(-8px);
+            background: rgba(60, 80, 140, 0.8);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(100, 150, 255, 0.5);
+        }
+
+        .concept-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #4fc3f7;
+        }
+
+        .concept-title {
+            color: #bbdefb;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            border-bottom: 2px solid rgba(100, 150, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .concept-content {
+            font-size: 1.1rem;
+            color: #e3f2fd;
+        }
+
+        .highlight {
+            background: rgba(79, 195, 247, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .usage {
+            background: rgba(30, 40, 70, 0.6);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+            border-left: 4px solid #4fc3f7;
+        }
+
+        .usage h2 {
+            color: #81d4fa;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .usage-steps {
+            margin-left: 20px;
+        }
+
+        .usage-step {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: #4fc3f7;
+            color: #1a237e;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #bbdefb;
+            font-size: 1rem;
+            border-top: 1px solid rgba(100, 150, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabs-container">
+        <div class="tabs">
+            <div class="tab active" data-tab="influxdb">InfluxDB</div>
+            <div class="tab" data-tab="grafana">Grafana</div>
+        </div>
+
+        <div class="content">
+            <!-- InfluxDB Page -->
+            <div class="page active" id="influxdb-page">
+                <header>
+                    <i class="fas fa-database tech-icon"></i>
+                    <h1>InfluxDB Introduction</h1>
+                    <p class="subtitle">A high-performance time-series database designed for handling metrics, events,
+                        and analytics</p>
+                </header>
+
+                <div class="concepts">
+                    <div class="concept-card">
+                        <i class="fas fa-building concept-icon"></i>
+                        <h3 class="concept-title">Organization</h3>
+                        <div class="concept-content">
+                            <p>The top-level container for all resources in InfluxDB. An <span
+                                    class="highlight">organization</span> typically represents a company, team, or
+                                project.</p>
+                            <p>It contains users, buckets, dashboards, tasks, and other resources. Each resource belongs
+                                to exactly one organization.</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-bucket concept-icon"></i>
+                        <h3 class="concept-title">Bucket (Database)</h3>
+                        <div class="concept-content">
+                            <p>A <span class="highlight">bucket</span> is a named location where time-series data is
+                                stored. It's similar to a database in traditional DBMS.</p>
+                            <p>Buckets have retention policies that define how long data is kept before being
+                                automatically deleted.</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-ruler concept-icon"></i>
+                        <h3 class="concept-title">Measurement (Table)</h3>
+                        <div class="concept-content">
+                            <p>A <span class="highlight">measurement</span> is a container for tags, fields, and a
+                                timestamp. It's conceptually similar to a SQL table.</p>
+                            <p>Measurements act as the primary grouping for time-series data, e.g., "cpu_usage" or
+                                "network_traffic".</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-key concept-icon"></i>
+                        <h3 class="concept-title">Point (Row)</h3>
+                        <div class="concept-content">
+                            <p>A single <span class="highlight">point</span> represents a single data record in a
+                                measurement. Each point contains:</p>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>Measurement name</li>
+                                <li>Tag set (key-value pairs)</li>
+                                <li>Field set (key-value pairs)</li>
+                                <li>Timestamp</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-tag concept-icon"></i>
+                        <h3 class="concept-title">Tag</h3>
+                        <div class="concept-content">
+                            <p><span class="highlight">Tags</span> are key-value pairs that provide metadata about your
+                                time-series data.</p>
+                            <p>Tags are indexed, making them efficient for querying and grouping. Examples:
+                                host="server1", region="us-west"</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-key concept-icon"></i>
+                        <h3 class="concept-title">Field</h3>
+                        <div class="concept-content">
+                            <p><span class="highlight">Fields</span> are key-value pairs that contain the actual data
+                                being measured.</p>
+                            <p>Fields are not indexed and can be of type float, integer, string, or boolean. Examples:
+                                temperature=23.4, status="active"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage">
+                    <h2>How InfluxDB Works in Performance Testing</h2>
+                    <div class="usage-steps">
+                        <div class="usage-step">
+                            <div class="step-number">1</div>
+                            <div>JMeter sends performance metrics to InfluxDB using the InfluxDBListener</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">2</div>
+                            <div>Metrics are stored as points in time-series format with timestamps</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">3</div>
+                            <div>Data is organized in measurements like "jmeter" or "performance"</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">4</div>
+                            <div>Tags identify test scenarios, thread groups, or request names</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">5</div>
+                            <div>Fields store actual metrics: response times, throughput, error counts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grafana Page -->
+            <div class="page" id="grafana-page">
+                <header>
+                    <i class="fas fa-chart-line tech-icon"></i>
+                    <h1>Grafana Introduction</h1>
+                    <p class="subtitle">Open-source analytics and monitoring platform for visualizing metrics from
+                        various data sources</p>
+                </header>
+
+                <div class="concepts">
+                    <div class="concept-card">
+                        <i class="fas fa-plug concept-icon"></i>
+                        <h3 class="concept-title">Data Source</h3>
+                        <div class="concept-content">
+                            <p>A <span class="highlight">data source</span> is a connection to a database or service
+                                that provides metrics for visualization.</p>
+                            <p>Grafana supports many data sources including InfluxDB, Prometheus, Graphite,
+                                Elasticsearch, and cloud monitoring services.</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-tachometer-alt concept-icon"></i>
+                        <h3 class="concept-title">Dashboard</h3>
+                        <div class="concept-content">
+                            <p>A <span class="highlight">dashboard</span> is a set of one or more panels organized in a
+                                grid layout.</p>
+                            <p>Dashboards provide a comprehensive view of related metrics and can be customized with
+                                different visualizations.</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-chart-bar concept-icon"></i>
+                        <h3 class="concept-title">Panel</h3>
+                        <div class="concept-content">
+                            <p>A <span class="highlight">panel</span> is the basic visualization building block in
+                                Grafana.</p>
+                            <p>Each panel displays data from a query in a specific visualization format (graph, gauge,
+                                table, etc.).</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-eye concept-icon"></i>
+                        <h3 class="concept-title">Visualization</h3>
+                        <div class="concept-content">
+                            <p><span class="highlight">Visualizations</span> are the different ways to represent your
+                                data:</p>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>Graphs (line, bar, area)</li>
+                                <li>Gauges and single stats</li>
+                                <li>Heatmaps and histograms</li>
+                                <li>Tables and logs</li>
+                                <li>Geomaps</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-code concept-icon"></i>
+                        <h3 class="concept-title">Query</h3>
+                        <div class="concept-content">
+                            <p>A <span class="highlight">query</span> defines what data to retrieve from the data source
+                                for visualization.</p>
+                            <p>Each panel has a query editor specific to the data source (e.g., Flux for InfluxDB,
+                                PromQL for Prometheus).</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <i class="fas fa-bell concept-icon"></i>
+                        <h3 class="concept-title">Alerting</h3>
+                        <div class="concept-content">
+                            <p>Grafana's <span class="highlight">alerting</span> system allows you to define rules that
+                                trigger notifications.</p>
+                            <p>Alerts can be based on metric thresholds and can send notifications via email, Slack,
+                                PagerDuty, and other channels.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage">
+                    <h2>How Grafana Works with Performance Data</h2>
+                    <div class="usage-steps">
+                        <div class="usage-step">
+                            <div class="step-number">1</div>
+                            <div>Connect Grafana to InfluxDB as a data source</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">2</div>
+                            <div>Create dashboards for different performance perspectives</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">3</div>
+                            <div>Add panels for specific metrics like response times or throughput</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">4</div>
+                            <div>Write queries to extract and transform time-series data</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">5</div>
+                            <div>Choose appropriate visualizations for different metrics</div>
+                        </div>
+                        <div class="usage-step">
+                            <div class="step-number">6</div>
+                            <div>Set up alerts for performance thresholds and anomalies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>InfluxDB & Grafana Introduction | Performance Monitoring Stack</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab');
+            const pages = document.querySelectorAll('.page');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const target = this.getAttribute('data-tab');
+
+                    // Update tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Update pages
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === `${target}-page`) {
+                            setTimeout(() => {
+                                page.classList.add('active');
+                            }, 50);
+                        }
+                    });
+                });
+            });
+
+            // Add animations to concept cards
+            const cards = document.querySelectorAll('.concept-card');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>
