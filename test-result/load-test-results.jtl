@@ -1,0 +1,361 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1753240766306,250,Auth - login,200,OK,Load Test 1-1,text,true,,1050,284,1,65,http://localhost:3052/v1/api//auth/login,250,0,3
+1753240766556,630,Browse - Get All Products,200,OK,Load Test 1-1,text,true,,3383,344,1,223,http://localhost:3052/v1/api/product,630,0,0
+1753240768299,1,Auth - login,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,3,503,http://localhost:3052/v1/api//auth/login,0,0,1
+1753240768301,1,Browse - Get All Products,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,3,503,http://localhost:3052/v1/api/product,0,0,1
+1753240767311,992,Browse - Get Specific Product,200,OK,Load Test 1-1,text,true,,945,346,3,503,http://localhost:3052/v1/api/product/1,992,0,0
+1753240769300,1,Auth - login,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,503,http://localhost:3052/v1/api//auth/login,0,0,1
+1753240769302,1,Browse - Get All Products,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,503,http://localhost:3052/v1/api/product,0,0,1
+1753240769485,1,Browse - Get Specific Product,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,502,http://localhost:3052/v1/api/product/41,0,0,1
+1753240769487,1,Cart - Add Item,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[201                                                                  ]]]
+
+/",2631,0,4,502,http://localhost:3052/v1/api/cart/41,0,0,1
+1753240769488,1,Cart - View Cart,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,502,http://localhost:3052/v1/api/cart/41,0,0,1
+1753240769489,1,Checkout,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[201                                                                  ]]]
+
+/",2631,0,4,502,http://localhost:3052/v1/api/checkout/41,0,0,1
+1753240769490,1,Auth - login,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,502,http://localhost:3052/v1/api//auth/login,0,0,1
+1753240769491,1,Browse - Get All Products,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,502,http://localhost:3052/v1/api/product,0,0,1
+1753240768304,1320,Cart - Add Item,201,Created,Load Test 1-1,text,true,,964,395,4,501,http://localhost:3052/v1/api/cart/2,1320,0,0
+1753240770006,2,Browse - Get Specific Product,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,493,http://localhost:3052/v1/api/product/47,0,0,2
+1753240770009,1,Cart - Add Item,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[201                                                                  ]]]
+
+/",2631,0,4,493,http://localhost:3052/v1/api/cart/97,0,0,1
+1753240770010,1,Cart - View Cart,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,493,http://localhost:3052/v1/api/cart/97,0,0,1
+1753240770011,1,Checkout,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[201                                                                  ]]]
+
+/",2631,0,4,493,http://localhost:3052/v1/api/checkout/97,0,0,1
+1753240770013,0,Auth - login,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,493,http://localhost:3052/v1/api//auth/login,0,0,0
+1753240770014,1,Browse - Get All Products,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3052 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
+
+****** comparison: [[[200                                                                  ]]]
+
+/",2631,0,4,493,http://localhost:3052/v1/api/product,0,0,1
+1753240769624,1499,Cart - View Cart,200,OK,Load Test 1-1,text,true,,1006,343,5,487,http://localhost:3052/v1/api/cart/2,1499,0,0
+1753240767301,3942,Auth - login,200,OK,Load Test 1-2,text,true,,1051,284,5,487,http://localhost:3052/v1/api//auth/login,3942,0,1
+1753240771244,1968,Browse - Get All Products,200,OK,Load Test 1-2,text,true,,3383,345,5,487,http://localhost:3052/v1/api/product,1968,0,0
+1753240771124,2743,Checkout,500,Internal Server Error,Load Test 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",1402,367,5,487,http://localhost:3052/v1/api/checkout/2,2743,0,0
+1753240773867,2422,Auth - login,200,OK,Load Test 1-1,text,true,,1051,411,5,487,http://localhost:3052/v1/api//auth/login,2422,0,0
+1753240774560,2319,Browse - Get Specific Product,200,OK,Load Test 1-2,text,true,,945,347,5,487,http://localhost:3052/v1/api/product/2,2319,0,0
+1753240776289,2606,Browse - Get All Products,200,OK,Load Test 1-1,text,true,,3383,345,5,487,http://localhost:3052/v1/api/product,2606,0,0
+1753240770209,9015,Browse - Get Specific Product,500,Internal Server Error,Load Test 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[5]]]00
+
+****** comparison: [[[2]]]00
+
+/",2100,219,5,487,http://localhost:3052/v1/api/product/33,9015,0,1
+1753240770302,9618,Auth - login,200,OK,Load Test 1-5,text,true,,1051,284,5,487,http://localhost:3052/v1/api//auth/login,9618,0,1
+1753240776880,3636,Cart - Add Item,201,Created,Load Test 1-2,text,true,,1085,397,5,487,http://localhost:3052/v1/api/cart/52,3636,0,0
+1753240779224,1932,Cart - Add Item,500,Internal Server Error,Load Test 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",2100,269,5,487,http://localhost:3052/v1/api/cart/83,1932,0,0
+1753240771296,10980,Browse - Get Specific Product,500,Internal Server Error,Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[5]]]00
+
+****** comparison: [[[2]]]00
+
+/",2100,218,5,486,http://localhost:3052/v1/api/product/3,10980,0,1
+1753240781156,1171,Cart - View Cart,500,Internal Server Error,Load Test 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[5]]]00
+
+****** comparison: [[[2]]]00
+
+/",2100,216,5,486,http://localhost:3052/v1/api/cart/83,1171,0,0
+1753240782277,370,Cart - Add Item,500,Internal Server Error,Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",2100,268,5,484,http://localhost:3052/v1/api/cart/53,370,0,0
+1753240782328,473,Checkout,500,Internal Server Error,Load Test 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",2100,240,5,484,http://localhost:3052/v1/api/checkout/83,473,0,0
+1753240782648,369,Cart - View Cart,500,Internal Server Error,Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[5]]]00
+
+****** comparison: [[[2]]]00
+
+/",2100,216,5,478,http://localhost:3052/v1/api/cart/53,369,0,0
+1753240783017,505,Checkout,500,Internal Server Error,Load Test 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",2100,240,5,463,http://localhost:3052/v1/api/checkout/53,505,0,0
+1753240779951,4097,Browse - Get All Products,200,OK,Load Test 1-5,text,true,,3383,345,4,454,http://localhost:3052/v1/api/product,4097,0,0
+1753240780767,3752,Browse - Get Specific Product,200,OK,Load Test 1-1,text,true,,947,348,4,454,http://localhost:3052/v1/api/product/13,3752,0,0
+1753240782801,2145,Auth - login,200,OK,Load Test 1-4,text,true,,1051,283,4,454,http://localhost:3052/v1/api//auth/login,2145,0,0
+1753240780516,5337,Cart - View Cart,200,OK,Load Test 1-2,text,true,,1219,345,4,454,http://localhost:3052/v1/api/cart/52,5337,0,0
+1753240784953,3518,Browse - Get All Products,200,OK,Load Test 1-4,text,true,,3383,345,4,454,http://localhost:3052/v1/api/product,3518,0,0
+1753240785465,3471,Browse - Get Specific Product,200,OK,Load Test 1-5,text,true,,947,348,4,454,http://localhost:3052/v1/api/product/11,3471,0,0
+1753240785853,3216,Checkout,400,Bad Request,Load Test 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[400]]]
+
+****** comparison: [[[201]]]
+
+/",929,369,4,454,http://localhost:3052/v1/api/checkout/52,3216,0,0
+1753240784519,5018,Cart - Add Item,201,Created,Load Test 1-1,text,true,,1149,398,4,454,http://localhost:3052/v1/api/cart/63,5018,0,0
+1753240789069,2661,Auth - login,200,OK,Load Test 1-2,text,true,,1051,412,4,454,http://localhost:3052/v1/api//auth/login,2661,0,0
+1753240789729,3071,Browse - Get Specific Product,200,OK,Load Test 1-4,text,true,,947,348,4,454,http://localhost:3052/v1/api/product/45,3071,0,0
+1753240788966,3859,Cart - Add Item,201,Created,Load Test 1-5,text,true,,1149,398,4,454,http://localhost:3052/v1/api/cart/61,3859,0,0
+1753240789537,3786,Cart - View Cart,200,OK,Load Test 1-1,text,true,,1333,345,4,454,http://localhost:3052/v1/api/cart/63,3786,0,0
+1753240791731,3016,Browse - Get All Products,200,OK,Load Test 1-2,text,true,,3383,345,4,454,http://localhost:3052/v1/api/product,3016,0,0
+1753240792800,4153,Cart - Add Item,201,Created,Load Test 1-4,text,true,,1149,398,4,454,http://localhost:3052/v1/api/cart/95,4153,0,0
+1753240792825,4143,Cart - View Cart,200,OK,Load Test 1-5,text,true,,1333,345,4,454,http://localhost:3052/v1/api/cart/61,4143,0,0
+1753240796044,2402,Browse - Get Specific Product,200,OK,Load Test 1-2,text,true,,945,347,4,454,http://localhost:3052/v1/api/product/7,2402,0,0
+1753240796980,3029,Cart - View Cart,200,OK,Load Test 1-4,text,true,,1549,345,4,454,http://localhost:3052/v1/api/cart/95,3029,0,0
+1753240796980,3825,Checkout,201,Created,Load Test 1-5,text,true,,1661,369,4,454,http://localhost:3052/v1/api/checkout/61,3825,0,0
+1753240793323,7622,Checkout,500,Internal Server Error,Load Test 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",1402,369,4,454,http://localhost:3052/v1/api/checkout/63,7622,0,0
+1753240798473,3780,Cart - Add Item,201,Created,Load Test 1-2,text,true,,1085,397,4,449,http://localhost:3052/v1/api/cart/57,3780,0,0
+1753240800804,4068,Auth - login,200,OK,Load Test 1-5,text,true,,1051,412,4,426,http://localhost:3052/v1/api//auth/login,4068,0,0
+1753240800944,4050,Auth - login,200,OK,Load Test 1-1,text,true,,1051,412,4,426,http://localhost:3052/v1/api//auth/login,4050,0,0
+1753240800008,6408,Checkout,500,Internal Server Error,Load Test 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",1402,369,4,417,http://localhost:3052/v1/api/checkout/95,6408,0,0
+1753240802253,4408,Cart - View Cart,200,OK,Load Test 1-2,text,true,,898,345,4,414,http://localhost:3052/v1/api/cart/57,4408,0,0
+1753240804874,2942,Browse - Get All Products,200,OK,Load Test 1-5,text,true,,3383,345,4,410,http://localhost:3052/v1/api/product,2942,0,0
+1753240804996,2852,Browse - Get All Products,200,OK,Load Test 1-1,text,true,,3383,345,4,410,http://localhost:3052/v1/api/product,2852,0,0
+1753240806417,2244,Auth - login,200,OK,Load Test 1-4,text,true,,1051,412,4,403,http://localhost:3052/v1/api//auth/login,2244,0,0
+1753240808661,2699,Browse - Get All Products,200,OK,Load Test 1-4,text,true,,3383,345,4,401,http://localhost:3052/v1/api/product,2699,0,0
+1753240806663,4773,Checkout,201,Created,Load Test 1-2,text,true,,1118,369,4,401,http://localhost:3052/v1/api/checkout/57,4773,0,0
+1753240808999,2639,Browse - Get Specific Product,200,OK,Load Test 1-1,text,true,,947,348,4,401,http://localhost:3052/v1/api/product/23,2639,0,0
+1753240809221,2487,Browse - Get Specific Product,200,OK,Load Test 1-5,text,true,,947,348,4,401,http://localhost:3052/v1/api/product/18,2487,0,0
+1753240811436,2690,Auth - login,200,OK,Load Test 1-2,text,true,,1051,412,4,401,http://localhost:3052/v1/api//auth/login,2690,0,0
+1753240811638,2833,Cart - Add Item,201,Created,Load Test 1-1,text,true,,965,398,4,401,http://localhost:3052/v1/api/cart/23,2833,0,0
+1753240811708,2995,Cart - Add Item,201,Created,Load Test 1-5,text,true,,965,398,4,401,http://localhost:3052/v1/api/cart/18,2995,0,0
+1753240813225,2775,Browse - Get Specific Product,200,OK,Load Test 1-4,text,true,,947,348,4,400,http://localhost:3052/v1/api/product/39,2775,0,0
+1753240814126,2415,Browse - Get All Products,200,OK,Load Test 1-2,text,true,,3383,345,4,398,http://localhost:3052/v1/api/product,2415,0,0
+1753240814502,2573,Cart - View Cart,200,OK,Load Test 1-1,text,true,,1008,345,4,398,http://localhost:3052/v1/api/cart/23,2573,0,0
+1753240814703,2624,Cart - View Cart,200,OK,Load Test 1-5,text,true,,1116,345,4,398,http://localhost:3052/v1/api/cart/18,2624,0,0
+1753240816021,3236,Cart - Add Item,201,Created,Load Test 1-4,text,true,,965,398,4,394,http://localhost:3052/v1/api/cart/39,3236,0,0
+1753240817100,2595,Browse - Get Specific Product,200,OK,Load Test 1-2,text,true,,947,348,4,385,http://localhost:3052/v1/api/product/32,2595,0,0
+1753240817328,2841,Checkout,201,Created,Load Test 1-5,text,true,,1229,369,4,380,http://localhost:3052/v1/api/checkout/18,2841,0,0
+1753240819257,2984,Cart - View Cart,200,OK,Load Test 1-4,text,true,,1008,345,4,344,http://localhost:3052/v1/api/cart/39,2984,0,0
+1753240819696,2726,Cart - Add Item,201,Created,Load Test 1-2,text,true,,965,398,4,338,http://localhost:3052/v1/api/cart/32,2726,0,0
+1753240817076,5580,Checkout,500,Internal Server Error,Load Test 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",1402,369,4,317,http://localhost:3052/v1/api/checkout/23,5580,0,0
+1753240820169,2772,Auth - login,200,OK,Load Test 1-5,text,true,,1050,412,3,304,http://localhost:3052/v1/api//auth/login,2772,0,0
+1753240822422,2477,Cart - View Cart,200,OK,Load Test 1-2,text,true,,1116,345,3,279,http://localhost:3052/v1/api/cart/32,2477,0,0
+1753240822942,2294,Browse - Get All Products,200,OK,Load Test 1-5,text,true,,3383,344,3,250,http://localhost:3052/v1/api/product,2294,0,0
+1753240822242,5098,Checkout,500,Internal Server Error,Load Test 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[500]]]
+
+****** comparison: [[[201]]]
+
+/",1402,369,3,214,http://localhost:3052/v1/api/checkout/39,5098,0,0
+1753240826958,1585,Browse - Get Specific Product,200,OK,Load Test 1-5,text,true,,945,346,2,181,http://localhost:3052/v1/api/product/8,1585,0,0
+1753240824899,4278,Checkout,201,Created,Load Test 1-2,text,true,,1229,369,2,150,http://localhost:3052/v1/api/checkout/32,4278,0,0
+1753240828542,1011,Cart - Add Item,201,Created,Load Test 1-5,text,true,,964,395,1,113,http://localhost:3052/v1/api/cart/8,1011,0,0
+1753240829553,496,Cart - View Cart,200,OK,Load Test 1-5,text,true,,1006,343,1,78,http://localhost:3052/v1/api/cart/8,496,0,0
+1753240830049,722,Checkout,201,Created,Load Test 1-5,text,true,,1117,367,1,28,http://localhost:3052/v1/api/checkout/8,722,0,0
+1753241253966,18,Auth - login,200,OK,Load Test 1-1,text,true,,1050,284,1,1,http://localhost:3052/v1/api//auth/login,18,0,4
+1753241253986,14,Browse - Get All Products,200,OK,Load Test 1-1,text,true,,3383,344,1,1,http://localhost:3052/v1/api/product,14,0,0
+1753241254963,11,Auth - login,200,OK,Load Test 1-2,text,true,,1050,284,2,2,http://localhost:3052/v1/api//auth/login,11,0,1
+1753241254974,9,Browse - Get All Products,200,OK,Load Test 1-2,text,true,,3383,344,2,2,http://localhost:3052/v1/api/product,9,0,0
+1753241255393,9,Browse - Get Specific Product,200,OK,Load Test 1-1,text,true,,945,346,2,2,http://localhost:3052/v1/api/product/1,9,0,0
+1753241255402,25,Cart - Add Item,201,Created,Load Test 1-1,text,true,,964,395,2,2,http://localhost:3052/v1/api/cart/1,25,0,0
+1753241255427,15,Cart - View Cart,200,OK,Load Test 1-1,text,true,,1006,343,2,2,http://localhost:3052/v1/api/cart/1,15,0,0
+1753241255442,27,Checkout,201,Created,Load Test 1-1,text,true,,1117,367,2,2,http://localhost:3052/v1/api/checkout/1,27,0,0
+1753241255470,11,Auth - login,200,OK,Load Test 1-1,text,true,,1050,411,2,2,http://localhost:3052/v1/api//auth/login,11,0,0
+1753241255481,12,Browse - Get All Products,200,OK,Load Test 1-1,text,true,,3383,344,2,2,http://localhost:3052/v1/api/product,12,0,0
+1753241255962,12,Auth - login,200,OK,Load Test 1-3,text,true,,1050,284,3,3,http://localhost:3052/v1/api//auth/login,12,0,1
+1753241255975,20,Browse - Get All Products,200,OK,Load Test 1-3,text,true,,3383,344,3,3,http://localhost:3052/v1/api/product,20,0,0
+1753241256770,7,Browse - Get Specific Product,200,OK,Load Test 1-2,text,true,,945,346,3,3,http://localhost:3052/v1/api/product/2,7,0,0
+1753241256777,13,Cart - Add Item,201,Created,Load Test 1-2,text,true,,964,395,3,3,http://localhost:3052/v1/api/cart/2,13,0,0
+1753241256790,12,Cart - View Cart,200,OK,Load Test 1-2,text,true,,1006,343,3,3,http://localhost:3052/v1/api/cart/2,12,0,0
+1753241256802,25,Checkout,201,Created,Load Test 1-2,text,true,,1116,367,3,3,http://localhost:3052/v1/api/checkout/2,25,0,0
+1753241256827,11,Auth - login,200,OK,Load Test 1-2,text,true,,1050,411,3,3,http://localhost:3052/v1/api//auth/login,11,0,0
+1753241256838,10,Browse - Get All Products,200,OK,Load Test 1-2,text,true,,3383,344,3,3,http://localhost:3052/v1/api/product,10,0,0
+1753241256846,8,Browse - Get Specific Product,200,OK,Load Test 1-1,text,true,,945,346,3,3,http://localhost:3052/v1/api/product/3,8,0,0
+1753241256854,14,Cart - Add Item,201,Created,Load Test 1-1,text,true,,964,395,3,3,http://localhost:3052/v1/api/cart/3,14,0,0
+1753241256868,12,Cart - View Cart,200,OK,Load Test 1-1,text,true,,1006,343,3,3,http://localhost:3052/v1/api/cart/3,12,0,0
+1753241256881,19,Checkout,201,Created,Load Test 1-1,text,true,,1116,367,3,3,http://localhost:3052/v1/api/checkout/3,19,0,0
+1753241256901,7,Auth - login,200,OK,Load Test 1-1,text,true,,1050,411,3,3,http://localhost:3052/v1/api//auth/login,6,0,0
+1753241256908,9,Browse - Get All Products,200,OK,Load Test 1-1,text,true,,3383,344,3,3,http://localhost:3052/v1/api/product,9,0,0
+1753241256961,10,Auth - login,200,OK,Load Test 1-4,text,true,,1050,284,4,4,http://localhost:3052/v1/api//auth/login,10,0,1
+1753241256972,7,Browse - Get All Products,200,OK,Load Test 1-4,text,true,,3383,344,4,4,http://localhost:3052/v1/api/product,7,0,0
+1753241256993,7,Browse - Get Specific Product,200,OK,Load Test 1-1,text,true,,945,346,4,4,http://localhost:3052/v1/api/product/6,7,0,0
+1753241257000,17,Cart - Add Item,201,Created,Load Test 1-1,text,true,,964,395,4,4,http://localhost:3052/v1/api/cart/6,17,0,0
+1753241257017,14,Cart - View Cart,200,OK,Load Test 1-1,text,true,,1006,343,4,4,http://localhost:3052/v1/api/cart/6,14,0,0
+1753241257031,21,Checkout,201,Created,Load Test 1-1,text,true,,1117,367,4,4,http://localhost:3052/v1/api/checkout/6,21,0,0
+1753241257084,7,Browse - Get Specific Product,200,OK,Load Test 1-2,text,true,,945,346,3,3,http://localhost:3052/v1/api/product/5,7,0,0
+1753241257091,13,Cart - Add Item,201,Created,Load Test 1-2,text,true,,964,395,3,3,http://localhost:3052/v1/api/cart/5,13,0,0
+1753241257104,13,Cart - View Cart,200,OK,Load Test 1-2,text,true,,1006,343,3,3,http://localhost:3052/v1/api/cart/5,13,0,0
+1753241257117,25,Checkout,201,Created,Load Test 1-2,text,true,,1116,367,3,3,http://localhost:3052/v1/api/checkout/5,25,0,0
+1753241257143,8,Auth - login,200,OK,Load Test 1-2,text,true,,1050,411,3,3,http://localhost:3052/v1/api//auth/login,8,0,0
+1753241257151,8,Browse - Get All Products,200,OK,Load Test 1-2,text,true,,3383,344,3,3,http://localhost:3052/v1/api/product,8,0,0
+1753241257960,10,Auth - login,200,OK,Load Test 1-5,text,true,,1050,284,4,4,http://localhost:3052/v1/api//auth/login,10,0,1
+1753241257970,15,Browse - Get All Products,200,OK,Load Test 1-5,text,true,,3383,344,4,4,http://localhost:3052/v1/api/product,15,0,0
+1753241257970,17,Browse - Get Specific Product,200,OK,Load Test 1-3,text,true,,945,346,4,4,http://localhost:3052/v1/api/product/4,17,0,0
+1753241257987,16,Cart - Add Item,201,Created,Load Test 1-3,text,true,,964,395,4,4,http://localhost:3052/v1/api/cart/4,16,0,0
+1753241258003,15,Cart - View Cart,200,OK,Load Test 1-3,text,true,,1006,343,4,4,http://localhost:3052/v1/api/cart/4,15,0,0
+1753241258025,13,Browse - Get Specific Product,200,OK,Load Test 1-2,text,true,,945,346,4,4,http://localhost:3052/v1/api/product/8,13,0,0
+1753241258018,48,Checkout,201,Created,Load Test 1-3,text,true,,1117,367,4,4,http://localhost:3052/v1/api/checkout/4,48,0,0
+1753241258039,31,Cart - Add Item,201,Created,Load Test 1-2,text,true,,964,395,4,4,http://localhost:3052/v1/api/cart/8,31,0,0
+1753241258067,19,Auth - login,200,OK,Load Test 1-3,text,true,,1051,411,4,4,http://localhost:3052/v1/api//auth/login,19,0,0
+1753241258071,26,Cart - View Cart,200,OK,Load Test 1-2,text,true,,1006,343,4,4,http://localhost:3052/v1/api/cart/8,26,0,0
+1753241258086,14,Browse - Get All Products,200,OK,Load Test 1-3,text,true,,3383,345,4,4,http://localhost:3052/v1/api/product,14,0,0
+1753241258097,29,Checkout,201,Created,Load Test 1-2,text,true,,1117,367,4,4,http://localhost:3052/v1/api/checkout/8,29,0,0
+1753241258136,8,Browse - Get Specific Product,200,OK,Load Test 1-5,text,true,,945,346,3,3,http://localhost:3052/v1/api/product/9,8,0,0
+1753241258144,18,Cart - Add Item,201,Created,Load Test 1-5,text,true,,964,395,3,3,http://localhost:3052/v1/api/cart/9,18,0,0
+1753241258162,12,Cart - View Cart,200,OK,Load Test 1-5,text,true,,1006,343,3,3,http://localhost:3052/v1/api/cart/9,12,0,0
+1753241258174,21,Checkout,201,Created,Load Test 1-5,text,true,,1116,367,3,3,http://localhost:3052/v1/api/checkout/9,21,0,0
+1753241258196,10,Auth - login,200,OK,Load Test 1-5,text,true,,1051,411,3,3,http://localhost:3052/v1/api//auth/login,10,0,0
+1753241258207,9,Browse - Get All Products,200,OK,Load Test 1-5,text,true,,3383,345,3,3,http://localhost:3052/v1/api/product,9,0,0
+1753241258652,7,Browse - Get Specific Product,200,OK,Load Test 1-4,text,true,,945,346,3,3,http://localhost:3052/v1/api/product/7,7,0,0
+1753241258660,18,Cart - Add Item,201,Created,Load Test 1-4,text,true,,964,395,3,3,http://localhost:3052/v1/api/cart/7,18,0,0
+1753241258678,16,Cart - View Cart,200,OK,Load Test 1-4,text,true,,1006,343,3,3,http://localhost:3052/v1/api/cart/7,16,0,0
+1753241258694,26,Checkout,201,Created,Load Test 1-4,text,true,,1117,367,3,3,http://localhost:3052/v1/api/checkout/7,26,0,0
+1753241258721,7,Auth - login,200,OK,Load Test 1-4,text,true,,1051,411,3,3,http://localhost:3052/v1/api//auth/login,7,0,0
+1753241258728,7,Browse - Get All Products,200,OK,Load Test 1-4,text,true,,3383,345,3,3,http://localhost:3052/v1/api/product,7,0,0
+1753241258747,10,Browse - Get Specific Product,200,OK,Load Test 1-3,text,true,,947,348,3,3,http://localhost:3052/v1/api/product/10,10,0,0
+1753241258758,14,Cart - Add Item,201,Created,Load Test 1-3,text,true,,965,398,3,3,http://localhost:3052/v1/api/cart/10,14,0,0
+1753241258773,11,Cart - View Cart,200,OK,Load Test 1-3,text,true,,1008,345,3,3,http://localhost:3052/v1/api/cart/10,11,0,0
+1753241258785,22,Checkout,201,Created,Load Test 1-3,text,true,,1120,369,3,3,http://localhost:3052/v1/api/checkout/10,22,0,0
+1753241258807,7,Auth - login,200,OK,Load Test 1-3,text,true,,1051,412,3,3,http://localhost:3052/v1/api//auth/login,7,0,0
+1753241258814,7,Browse - Get All Products,200,OK,Load Test 1-3,text,true,,3383,345,3,3,http://localhost:3052/v1/api/product,7,0,0
+1753241259441,5,Browse - Get Specific Product,200,OK,Load Test 1-5,text,true,,947,348,3,3,http://localhost:3052/v1/api/product/11,5,0,0
+1753241259447,12,Cart - Add Item,201,Created,Load Test 1-5,text,true,,965,398,3,3,http://localhost:3052/v1/api/cart/11,12,0,0
+1753241259460,14,Cart - View Cart,200,OK,Load Test 1-5,text,true,,1008,345,3,3,http://localhost:3052/v1/api/cart/11,14,0,0
+1753241259474,33,Checkout,201,Created,Load Test 1-5,text,true,,1120,369,3,3,http://localhost:3052/v1/api/checkout/11,33,0,0
+1753241259507,9,Auth - login,200,OK,Load Test 1-5,text,true,,1051,412,3,3,http://localhost:3052/v1/api//auth/login,9,0,0
+1753241259517,10,Browse - Get All Products,200,OK,Load Test 1-5,text,true,,3383,345,3,3,http://localhost:3052/v1/api/product,10,0,0
+1753241259805,8,Browse - Get Specific Product,200,OK,Load Test 1-3,text,true,,947,348,3,3,http://localhost:3052/v1/api/product/13,8,0,0
+1753241259813,15,Cart - Add Item,201,Created,Load Test 1-3,text,true,,965,398,3,3,http://localhost:3052/v1/api/cart/13,15,0,0
+1753241259828,11,Cart - View Cart,200,OK,Load Test 1-3,text,true,,1008,345,3,3,http://localhost:3052/v1/api/cart/13,11,0,0
+1753241259839,25,Checkout,201,Created,Load Test 1-3,text,true,,1120,369,3,3,http://localhost:3052/v1/api/checkout/13,25,0,0
+1753241259921,7,Browse - Get Specific Product,200,OK,Load Test 1-4,text,true,,947,348,2,2,http://localhost:3052/v1/api/product/12,7,0,0
+1753241259933,11,Browse - Get Specific Product,200,OK,Load Test 1-5,text,true,,947,348,2,2,http://localhost:3052/v1/api/product/14,11,0,0
+1753241259929,17,Cart - Add Item,201,Created,Load Test 1-4,text,true,,965,398,2,2,http://localhost:3052/v1/api/cart/12,17,0,0
+1753241259945,19,Cart - Add Item,201,Created,Load Test 1-5,text,true,,965,398,2,2,http://localhost:3052/v1/api/cart/14,19,0,0
+1753241259946,21,Cart - View Cart,200,OK,Load Test 1-4,text,true,,1008,345,2,2,http://localhost:3052/v1/api/cart/12,21,0,0
+1753241259965,39,Cart - View Cart,200,OK,Load Test 1-5,text,true,,1008,345,2,2,http://localhost:3052/v1/api/cart/14,39,0,0
+1753241259967,67,Checkout,201,Created,Load Test 1-4,text,true,,1120,369,2,2,http://localhost:3052/v1/api/checkout/12,67,0,0
+1753241260034,17,Auth - login,200,OK,Load Test 1-4,text,true,,1051,412,2,2,http://localhost:3052/v1/api//auth/login,17,0,0
+1753241260004,48,Checkout,201,Created,Load Test 1-5,text,true,,1120,369,2,2,http://localhost:3052/v1/api/checkout/14,48,0,0
+1753241260051,10,Browse - Get All Products,200,OK,Load Test 1-4,text,true,,3383,345,1,1,http://localhost:3052/v1/api/product,10,0,0
+1753241260961,7,Browse - Get Specific Product,200,OK,Load Test 1-4,text,true,,947,348,1,1,http://localhost:3052/v1/api/product/15,7,0,0
+1753241260969,12,Cart - Add Item,201,Created,Load Test 1-4,text,true,,965,398,1,1,http://localhost:3052/v1/api/cart/15,12,0,0
+1753241260982,11,Cart - View Cart,200,OK,Load Test 1-4,text,true,,1008,345,1,1,http://localhost:3052/v1/api/cart/15,10,0,0
+1753241260993,21,Checkout,201,Created,Load Test 1-4,text,true,,1119,369,1,1,http://localhost:3052/v1/api/checkout/15,21,0,0
