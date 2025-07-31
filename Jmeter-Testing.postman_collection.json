@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "c9eba571-0ce8-4150-b32d-c34e205d9e34",
+		"name": "Jmeter-Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25057899"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"bao11\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user001\",\r\n    \"password\": \"pass001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3052/v1/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3052",
+							"path": [
+								"v1",
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "View Cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTc1Mjk2OTMwMCwiZXhwIjoxNzUzMDA1MzAwfQ.9s_NpqXbTGhCXWo82rnIeTyhaBjDG6XeQeijORPGadc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/cart/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add To Cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTc1Mjk2OTMwMCwiZXhwIjoxNzUzMDA1MzAwfQ.9s_NpqXbTGhCXWo82rnIeTyhaBjDG6XeQeijORPGadc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"2\",\r\n    \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cart/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODc1ZmZmY2JhNWI3NTk5ZTA5MzRmMzgiLCJpYXQiOjE3NTI1Njg3NjYsImV4cCI6MTc1MjU3MjM2Nn0.8082vDz1kTkoQ15prGUvbL-JA9NyPDRmE4y2yU6B2Ws",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"Sneaker 3\",\r\n    \"productPrice\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/product/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Of Product Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODc2ZWY5MTk2YzFmMmQ3NWIxZDJjZTgiLCJpYXQiOjE3NTI2MjUxMDUsImV4cCI6MTc1MjY2MTEwNX0.wsYba6YEOqkvWqcHXa3YAYN_VQ3Koj1SHgNk08SuJXQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/product",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODc2ZWY5MTk2YzFmMmQ3NWIxZDJjZTgiLCJpYXQiOjE3NTI2MjUxMDUsImV4cCI6MTc1MjY2MTEwNX0.wsYba6YEOqkvWqcHXa3YAYN_VQ3Koj1SHgNk08SuJXQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/product/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"product",
+								"1"
+							],
+							"query": [
+								{
+									"key": "auth",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CheckOut",
+			"item": [
+				{
+					"name": "Checkout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTc1Mjk2OTMwMCwiZXhwIjoxNzUzMDA1MzAwfQ.9s_NpqXbTGhCXWo82rnIeTyhaBjDG6XeQeijORPGadc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/checkout/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"checkout",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3052/v1/api",
+			"type": "string"
+		}
+	]
+}
